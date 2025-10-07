@@ -1,332 +1,613 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs - Intégral et Interactif</title>
-<style>
-  body {
-    background: #f1f4f6;
-    font-family: 'Montserrat', Arial, sans-serif;
-    margin: 0; padding: 0;
-  }
-  .app-container {
-    max-width: 960px;
-    margin: 2rem auto;
-    background: #fff;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    padding: 2rem;
-    min-height: 600px;
-  }
-  h1 {
-    text-align: center;
-    color: #2b4a63;
-    margin-bottom: 1rem;
-  }
-  .doc-link {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .doc-link a {
-    color: #2980b9;
-    text-decoration: underline;
-    font-weight: bold;
-  }
-  .tabs {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 2px solid #ddd;
-    margin-bottom: 1rem;
-  }
-  .tab {
-    flex: 1;
-    padding: 0.8rem;
-    margin: 0 0.3rem;
-    text-align: center;
-    cursor: pointer;
-    background: #cee4fb;
-    border-radius: 2rem 2rem 0 0;
-    font-weight: bold;
-    color: #155d95;
-    transition: background-color 0.3s ease;
-    user-select: none;
-  }
-  .tab.active {
-    background: #2980b9;
-    color: white;
-    box-shadow: inset 0 -3px 0 0 white;
-  }
-  main.content {
-    background: #eef2f5;
-    border-radius: 0 1rem 1rem 1rem;
-    padding: 1.5rem;
-    min-height: 500px;
-    box-shadow: inset 0 1px 4px #acd0ffdd;
-    overflow-y: auto;
-  }
-  h2 {
-    color: #1e3d59;
-    margin-top: 0;
-  }
-  h3 {
-    margin-top: 1rem;
-    color: #335d7e;
-  }
-  ul {
-    margin-left: 1.2rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  ul li {
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  p {
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-  .example {
-    background: #fce4ec;
-    border-left: 5px solid #f06292;
-    padding: 0.9rem 1rem;
-    margin: 1rem 0 1.5rem;
-    font-style: italic;
-    color: #6b2734;
-  }
-  .quiz {
-    margin-top: 2rem;
-    text-align: center;
-  }
-  .quiz button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 1.2rem;
-    font-weight: 600;
-    margin: 0.4rem 0.5rem;
-    cursor: pointer;
-    min-width: 150px;
-    transition: background-color 0.3s ease;
-  }
-  .quiz button:hover {
-    background: #1f6fa4;
-  }
-  .quiz h3 {
-    color: #154c79;
-  }
-  .result {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2a5a7a;
-    margin-top: 1rem;
-  }
-  @media (max-width: 720px) {
-    .tab {
-      font-size: 0.85rem;
-      padding: 0.7rem 0.4rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B3_M1_001_Le conseil et l’assistance à la direction et aux collaborateurs — Mode sombre</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Palette sombre bleu premium */
+      --bg:#0b1226; --bg2:#0a0f22; --card:rgba(17,24,39,.92);
+      --ink:#e5e7eb; --muted:#9ca3af; --line:#1f2937;
+      --blue:#3b82f6; --cyan:#06b6d4; --rose:#ec4899; --amber:#f59e0b; --emerald:#22c55e; --violet:#8b5cf6;
     }
-  }
-</style>
+    html,body{height:100%}
+    body{font-family:'Inter',sans-serif; background:linear-gradient(180deg,var(--bg),var(--bg2)); color:var(--ink)}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:1.25rem; box-shadow:0 8px 30px rgba(0,0,0,.35); margin-bottom:1.25rem}
+    .hdr{cursor:pointer; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; border-radius:1.25rem}
+    .hdr:hover{background:#0f172a}
+    .cnt{max-height:0; overflow:hidden; transition:max-height .5s ease, padding .5s ease; padding:0 1.25rem}
+    .cnt.open{padding-bottom:1.25rem}
+    .icon{transition:transform .3s ease; color:#94a3b8}
+    .icon.open{transform:rotate(180deg)}
+    .box{background:#0b1226; border-left:4px solid var(--blue); border-radius:.9rem; padding:1rem; margin-top:1rem; border:1px solid #243042}
+    .q{background:#0b1226; border:1px solid #243042; border-radius:.9rem; padding:1rem; margin:1rem 0}
+    .btn{padding:.7rem 1.25rem; color:#0b1226; font-weight:800; border-radius:.75rem; transition: all .2s ease; background:var(--blue)}
+    .btn:hover{transform: translateY(-1px); box-shadow:0 8px 24px rgba(59,130,246,.35)}
+    .btn.alt{background:var(--emerald); color:#0b1226}
+    .ok{display:none; margin-top:.6rem; padding:.6rem .9rem; border-radius:.6rem; font-weight:700; font-size:.95rem}
+    .ok.good{display:block; background-color:#16a34a22; color:#22c55e}
+    .ok.bad{display:block; background-color:#ef444422; color:#ef4444}
+    .tbl{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:.75rem; border:1px solid #243042; margin-top:.75rem}
+    .tbl th,.tbl td{padding:.75rem 1rem; border-bottom:1px solid #243042}
+    .tbl tr:last-child td {border-bottom: none;}
+    .tbl th{background:#0f172a; text-align:left; color:#e5e7eb; font-weight:600}
+    .tbl td.icon::before{content:"🔹 "}
+    .hint{font-size:.9rem; color:#9ca3af}
+    .pill{font-size:.75rem; font-weight:700; padding:.2rem .6rem; border-radius:999px; border:1px solid #243042; background:#0b1226; color:#e5e7eb}
+    .title-gradient{background:linear-gradient(90deg,#60a5fa,#22d3ee,#a78bfa); -webkit-background-clip:text; background-clip:text; color:transparent; animation:gradient-move 8s ease infinite; background-size:300% 300%}
+    @keyframes gradient-move{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .sticky-nav{position:sticky;top:0;z-index:50;background:#0b1226cc;backdrop-filter:blur(6px);padding:.5rem 1rem;border-bottom:1px solid #243042}
+    .sticky-nav a{margin:0 .5rem; color:#60a5fa; font-weight:700; transition:.2s}
+    .sticky-nav a:hover{color:#ec4899}
+    .subnav{display:flex; gap:.5rem; flex-wrap:wrap; margin:.5rem 0}
+    .subnav a{font-size:.85rem; color:#22d3ee; border:1px solid #243042; padding:.22rem .55rem; border-radius:999px; background:#0b1226}
+    .subnav a:hover{color:#ec4899}
+    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.45); z-index:100}
+    .modal.open{display:flex}
+    .modal-card{background:var(--card); border:1px solid #243042; border-radius:1rem; padding:1.5rem; width:min(640px,92%)}
+    .title-diplome{background:linear-gradient(90deg,#22c55e,#06b6d4,#3b82f6); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800}
+    .confetti{position:fixed; top:-10px; width:8px; height:14px; opacity:.95; z-index:200; border-radius:2px}
+
+    /* Lisibilité sombre : forcer certaines classes Tailwind utilisées dans le HTML */
+    .text-slate-700, .text-slate-800, .text-slate-900 { color:#e5e7eb !important; }
+    /* Champs de saisie en mode sombre */
+    input, select, textarea { background:#0b1226 !important; color:#e2e8f0 !important; border-color:#334155 !important; }
+    input::placeholder, textarea::placeholder { color:#94a3b8; }
+  </style>
 </head>
-<body>
-  <div class="app-container">
-    <h1>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs</h1>
-    <div class="doc-link">
-      <a href="https://drive.google.com/file/d/1EQvkQ5EU2Y8F1Mwx-WqVs7jbbN87rsHS/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Télécharger le document PDF complet</a>
-    </div>
+<body class="antialiased">
 
-    <div class="tabs" role="tablist" aria-label="Sections du document interactif">
-      <div class="tab active" role="tab" tabindex="0" id="tab-1" aria-controls="panel-1" aria-selected="true">Contexte</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-2" aria-controls="panel-2" aria-selected="false">Expertise Direction</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-3" aria-controls="panel-3" aria-selected="false">Prévention des risques</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-4" aria-controls="panel-4" aria-selected="false">Communication</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-5" aria-controls="panel-5" aria-selected="false">Cas pratique</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-6" aria-controls="panel-6" aria-selected="false">Parcours collaborateur</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-7" aria-controls="panel-7" aria-selected="false">L’essentiel</div>
-      <div class="tab" role="tab" tabindex="-1" id="tab-8" aria-controls="panel-8" aria-selected="false">Auto-évaluation</div>
-    </div>
+  <!-- Sommaire sticky -->
+  <nav class="sticky-nav flex flex-wrap justify-center gap-3">
+    <a href="#intro">🧭 Intro</a>
+    <a href="#dir">🏛️ Direction</a>
+    <a href="#risques">⚠️ Risques</a>
+    <a href="#com">📣 Communication</a>
+    <a href="#acteurs">👥 Acteurs</a>
+    <a href="#outils">🛠️ Outils</a>
+    <a href="#quiz">🎓 Quiz</a>
+    <a href="#piece">📎 Pièce jointe</a>
+  </nav>
 
-    <main tabindex="0" role="tabpanel" id="content" aria-labelledby="tab-1" class="content">
-      <!-- contenu dynamique -->
-    </main>
+  <div class="max-w-6xl mx-auto p-4 md:p-8">
+
+    <header class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-extrabold title-gradient">✨ B3_M1_001 — Le conseil et l’assistance à la direction et aux collaborateurs ✨</h1>
+      <p class="mt-3 text-lg text-slate-700">Mode <strong>sombre bleu premium</strong>, synthèse structurée du module, outils interactifs (audit, matrice des risques, plan de com’) et quiz à correction immédiate.</p>
+      <div class="mt-3 flex flex-wrap gap-2 justify-center">
+        <span class="pill">🎯 Rôle stratégique du gestionnaire de paie</span><span class="pill">🛡️ Prévention des risques</span><span class="pill">🗣️ Communication interne & élus</span><span class="pill">👤 Parcours collaborateur</span>
+      </div>
+    </header>
+
+    <!-- Introduction -->
+    <section id="intro" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">🧭</span><h2 class="text-xl font-semibold">Introduction & contexte</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="subnav">
+            <a href="#hist">📚 Contexte historique</a>
+            <a href="#def">🧾 Définition</a>
+            <a href="#obj">🎯 Objectifs du module</a>
+          </div>
+          <div class="box" style="border-left-color:var(--cyan)" id="hist">
+            <h3 class="font-bold" style="color:var(--cyan)">📚 De l’administratif au stratégique</h3>
+            <ul class="list-disc list-inside text-slate-700 space-y-1 mt-2">
+              <li>Naissance du « service du personnel » avec l’avènement du salariat, puis évolution vers une <strong>fonction RH</strong> autonome.</li>
+              <li>Années 1980–1990 : passage à la <strong>fonction stratégique</strong> (tertiairisation, montée des compétences, législation renforcée).</li>
+              <li>La paie devient un <strong>levier de compétitivité</strong>, le/la GRP conseille et aligne RH & stratégie.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-left-color:var(--rose)" id="def">
+            <h3 class="font-bold" style="color:var(--rose)">🧾 Définition – Conseil RH</h3>
+            <p class="text-slate-700">Service spécialisé qui aide l’entreprise à traiter <em>recrutement, développement des talents, conformité</em> et <em>stratégie RH</em>, afin d’orienter des décisions éclairées.</p>
+          </div>
+          <div class="box" style="border-left-color:var(--emerald)" id="obj">
+            <h3 class="font-bold" style="color:var(--emerald)">🎯 Objectifs pédagogiques</h3>
+            <ul class="list-disc list-inside text-slate-700 space-y-1 mt-2">
+              <li>Endosser un <strong>rôle de conseil</strong> auprès de la Direction (audit, politique RH, Comp&Ben).</li>
+              <li>Agir en <strong>préventeur du risque</strong> (identification, évaluation, plan d’actions).</li>
+              <li>Piloter la <strong>communication</strong> (collaborateurs & élus) et outiller les managers/RH.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Direction -->
+    <section id="dir" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">🏛️</span><h2 class="text-xl font-semibold" style="color:var(--blue)">Une expertise au service de la Direction</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="subnav">
+            <a href="#audit">🩺 Audit & politique RH</a>
+            <a href="#metiers">🧠 Métiers du conseil</a>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4" id="audit">
+            <div class="box" style="border-left-color:var(--blue)">
+              <h3 class="font-bold" style="color:var(--blue)">🩺 Identifier le besoin & co‑construire la politique RH</h3>
+              <ul class="list-disc list-inside text-slate-700 space-y-1">
+                <li>Diagnostic : talents & fidélisation, performance RH/coûts, conformité, communication interne, rémunération.</li>
+                <li>Proposition : axes d’amélioration + <strong>politique RH</strong> formalisée & suivie (objectifs, indicateurs).</li>
+                <li>Posture : <strong>partenaire stratégique</strong> (solutions argumentées, pédagogie, accompagnement).</li>
+              </ul>
+            </div>
+            <div class="box" style="border-left-color:var(--emerald)" id="metiers">
+              <h3 class="font-bold" style="color:var(--emerald)">🧠 Métiers & expertises mobilisables</h3>
+              <ul class="list-disc list-inside text-slate-700 space-y-1">
+                <li><strong>Comp&Ben</strong> (rémunération & avantages), <strong>Consultant RH</strong>, <strong>Juriste social</strong>.</li>
+                <li>Interne/externe selon besoins, avec le/la GRP comme <em>chef d’orchestre</em>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risques -->
+    <section id="risques" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">⚠️</span><h2 class="text-xl font-semibold" style="color:var(--amber)">Prévention des risques</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="subnav">
+            <a href="#id-risques">🧩 Identifier/évaluer</a>
+            <a href="#prop-risques">🛠️ Être force de proposition</a>
+          </div>
+          <div class="box" style="border-left-color:var(--amber)" id="id-risques">
+            <h3 class="font-bold" style="color:var(--amber)">🧩 Méthodes d’identification & d’évaluation</h3>
+            <ul class="list-disc list-inside text-slate-700 space-y-1">
+              <li>Audit de conformité paie/RH, analyse de <em>tableaux de bord</em>, systèmes d’alerte.</li>
+              <li><strong>Matrice de risques</strong> (probabilité × impact) pour prioriser les actions.</li>
+            </ul>
+          </div>
+          <div class="box" style="border-left-color:var(--rose)" id="prop-risques">
+            <h3 class="font-bold" style="color:var(--rose)">🛠️ Réduire les risques</h3>
+            <ul class="list-disc list-inside text-slate-700 space-y-1">
+              <li>Procédures (ex. licenciement), <strong>garde‑fous paie</strong> (veille, contrôles), <strong>formation</strong>, assurance.</li>
+              <li>Capacité à convaincre la Direction avec des <em>scénarios coûts/risques</em>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Communication -->
+    <section id="com" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">📣</span><h2 class="text-xl font-semibold" style="color:var(--violet)">Communication – collaborateurs & élus</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="subnav">
+            <a href="#com-colls">👥 Collaborateurs</a>
+            <a href="#com-elus">🏛️ Élus (CSE)</a>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="box" style="border-left-color:var(--cyan)" id="com-colls">
+              <h3 class="font-bold" style="color:var(--cyan)">👥 Communication collaborateurs</h3>
+              <table class="tbl text-sm">
+                <thead><tr><th>🎯 Objectifs</th><th>🛠️ Compétences/Outils</th></tr></thead>
+                <tbody>
+                  <tr><td class="icon">Informer droits/devoirs & enjeux RH</td><td>Vulgarisation, synthèse → Intranet, <strong>newsletter</strong>, réunions, affichage.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="box" style="border-left-color:var(--emerald)" id="com-elus">
+              <h3 class="font-bold" style="color:var(--emerald)">🏛️ Communication élus / dialogue social</h3>
+              <table class="tbl text-sm">
+                <thead><tr><th>🎯 Objectifs</th><th>🛠️ Moyens</th></tr></thead>
+                <tbody>
+                  <tr><td class="icon">Informer/consulter le CSE sur projets RH</td><td>Maîtrise droit du travail, capacité à négocier → Réunions CSE, BDESE, échanges formels.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acteurs & parcours collaborateur -->
+    <section id="acteurs" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">👥</span><h2 class="text-xl font-semibold" style="color:var(--emerald)">Accompagnement des managers, RH & salariés</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="subnav">
+            <a href="#managers">🧭 Managers</a>
+            <a href="#equipe-rh">🛠️ Équipe RH</a>
+            <a href="#salaries">🧑‍💼 Salariés</a>
+          </div>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="box" style="border-left-color:var(--blue)" id="managers">
+              <h3 class="font-bold" style="color:var(--blue)">🧭 Managers</h3>
+              <ul class="list-disc list-inside text-slate-700 space-y-1">
+                <li>Appui disciplinaire, entretiens annuels, gestion des absences.</li>
+                <li>Prévention RPS, accompagnement du changement (SIRH, GTA…).</li>
+              </ul>
+            </div>
+            <div class="box" style="border-left-color:var(--rose)" id="equipe-rh">
+              <h3 class="font-bold" style="color:var(--rose)">🛠️ Équipe RH</h3>
+              <ul class="list-disc list-inside text-slate-700 space-y-1">
+                <li>Formations paie/SIRH/droit social, veille & audits, soutien PSE/contentieux.</li>
+              </ul>
+            </div>
+            <div class="box" style="border-left-color:var(--amber)" id="salaries">
+              <h3 class="font-bold" style="color:var(--amber)">🧑‍💼 Salariés</h3>
+              <ul class="list-disc list-inside text-slate-700 space-y-1">
+                <li>Explication bulletin, congés/absences, accompagnement tout au long du parcours.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outils interactifs -->
+    <section id="outils" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">🛠️</span><h2 class="text-xl font-semibold" style="color:var(--cyan)">Outils de conseil interactifs</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- Outil 1: Checklist d'audit RH -->
+            <div class="box" style="border-left-color:var(--cyan)">
+              <h3 class="font-bold" style="color:var(--cyan)">🩺 Générateur de checklist d’audit RH</h3>
+              <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                <label>Focales
+                  <select id="au-foc" class="w-full rounded-md p-1">
+                    <option value="all">Complet</option>
+                    <option value="perf">Performance & coûts</option>
+                    <option value="conf">Conformité</option>
+                    <option value="talent">Talents & fidélisation</option>
+                    <option value="com">Communication interne</option>
+                    <option value="rem">Rémunération</option>
+                  </select>
+                </label>
+                <label>Format
+                  <select id="au-format" class="w-full rounded-md p-1">
+                    <option value="todo">À cocher</option>
+                    <option value="table">Tableau</option>
+                  </select>
+                </label>
+              </div>
+              <button class="btn mt-2" onclick="genAudit()">Générer</button>
+              <div id="out-audit" class="ok good mt-2" style="display:none"></div>
+            </div>
+
+            <!-- Outil 2: Matrice des risques -->
+            <div class="box" style="border-left-color:var(--amber)">
+              <h3 class="font-bold" style="color:var(--amber)">⚠️ Constructeur de matrice des risques</h3>
+              <div class="grid grid-cols-3 gap-2 mt-2 text-sm">
+                <label>Risque
+                  <input id="rk-name" type="text" placeholder="Heures supp non suivies" class="w-full rounded-md p-1">
+                </label>
+                <label>Probabilité (1–5)
+                  <input id="rk-prob" type="number" min="1" max="5" value="3" class="w-full rounded-md p-1">
+                </label>
+                <label>Impact (1–5)
+                  <input id="rk-imp" type="number" min="1" max="5" value="3" class="w-full rounded-md p-1">
+                </label>
+                <label class="col-span-3">Mesures proposées
+                  <input id="rk-act" type="text" placeholder="Pointage électronique, récup feuilles signées" class="w-full rounded-md p-1">
+                </label>
+              </div>
+              <button class="btn mt-2" onclick="addRisk()">Ajouter à la matrice</button>
+              <div id="out-risk" class="ok good mt-2" style="display:none"></div>
+            </div>
+
+            <!-- Outil 3: Plan de communication -->
+            <div class="box" style="border-left-color:var(--violet)">
+              <h3 class="font-bold" style="color:var(--violet)">📣 Plan de communication (collaborateurs / élus)</h3>
+              <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                <label>Public cible
+                  <select id="pc-cible" class="w-full rounded-md p-1">
+                    <option value="collab">Collaborateurs</option>
+                    <option value="elus">Élus (CSE)</option>
+                  </select>
+                </label>
+                <label>Canal
+                  <select id="pc-canal" class="w-full rounded-md p-1">
+                    <option>Newsletter</option>
+                    <option>Réunion</option>
+                    <option>Intranet</option>
+                    <option>BDESE</option>
+                  </select>
+                </label>
+                <label class="col-span-2">Message clé
+                  <input id="pc-msg" type="text" placeholder="Mise en place titres-restaurant : ce qu’il faut savoir" class="w-full rounded-md p-1">
+                </label>
+              </div>
+              <button class="btn mt-2" onclick="buildPlan()">Construire</button>
+              <div id="out-plan" class="ok good mt-2" style="display:none"></div>
+            </div>
+
+            <!-- Outil 4: Cas pratique – Turnover -->
+            <div class="box" style="border-left-color:var(--emerald)">
+              <h3 class="font-bold" style="color:var(--emerald)">🧪 Cas pratique – Turnover</h3>
+              <p class="hint">Propose un plan d’actions (3 leviers minimum) pour un service commercial avec 25% de turnover, ancienneté moyenne 2 ans.</p>
+              <textarea id="cp-text" rows="4" class="w-full rounded-md p-2 mt-2" placeholder="Ex.: plan de dev compétences, étude de rémunération, actions QVT/ambiance, exit interviews…"></textarea>
+              <button class="btn mt-2" onclick="checkCase()">Valider</button>
+              <div id="out-cp" class="ok" style="display:none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pièce jointe à compléter -->
+        <!-- Pièce jointe (lien cliquable) -->
+    <section id="piece" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">📎</span><h2 class="text-xl font-semibold" style="color:var(--emerald)">Pièce jointe</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <div class="box" style="border-left-color:var(--emerald)">
+            <h3 class="font-bold" style="color:var(--emerald)">🔗 Accéder à la pièce jointe</h3>
+            <p class="text-slate-700">Clique pour ouvrir le document associé au module.</p>
+            <a class="btn mt-2 inline-block" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1EQvkQ5EU2Y8F1Mwx-WqVs7jbbN87rsHS/view?usp=drive_link">📎 Ouvrir la pièce jointe</a>
+            <p class="hint mt-2">Le lien s’ouvre dans un nouvel onglet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="card">
+      <div class="hdr" onclick="toggle(this)">
+        <div class="flex items-center gap-3"><span class="text-2xl">🎓</span><h2 class="text-xl font-semibold" style="color:var(--rose)">Quiz (8 questions) – correction immédiate</h2></div>
+        <svg class="icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="cnt">
+        <div class="pt-4">
+          <p class="hint">Valide chaque question pour afficher la réponse et l’explication. Puis clique « Calculer mon score ».</p>
+
+          <div class="q">
+            <p class="font-semibold">Q1/8</p>
+            <p class="mt-2">Premier pas pour établir une politique de rémunération efficace ?</p>
+            <label class="block mt-2"><input type="radio" name="q1" value="a"> Réaliser un audit</label>
+            <label class="block mt-1"><input type="radio" name="q1" value="b"> Mettre des procédures disciplinaires</label>
+            <label class="block mt-1"><input type="radio" name="q1" value="c"> Former les managers</label>
+            <button class="btn mt-2" onclick="checkOne('q1','a','q1-fb','L’audit révèle les besoins et aligne la politique RH sur la stratégie.')">Valider</button>
+            <div id="q1-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q2/8</p>
+            <p class="mt-2">Quel métier est spécialiste de la politique de rémunération ?</p>
+            <label class="block mt-2"><input type="radio" name="q2" value="a"> Responsable Comp&Ben</label>
+            <label class="block mt-1"><input type="radio" name="q2" value="b"> Notaire</label>
+            <label class="block mt-1"><input type="radio" name="q2" value="c"> Consultant RH</label>
+            <label class="block mt-1"><input type="radio" name="q2" value="d"> Juriste social</label>
+            <button class="btn mt-2" onclick="checkOne('q2','a','q2-fb','Comp&Ben = expert rémunération & avantages sociaux.')">Valider</button>
+            <div id="q2-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q3/8</p>
+            <p class="mt-2">Rôle du/de la GRP dans la communication de la politique RH ?</p>
+            <label class="block mt-2"><input type="radio" name="q3" value="a"> Informer uniquement la Direction</label>
+            <label class="block mt-1"><input type="radio" name="q3" value="b"> Communiquer vers collaborateurs <em>et</em> élus</label>
+            <label class="block mt-1"><input type="radio" name="q3" value="c"> Se concentrer sur l’externe</label>
+            <button class="btn mt-2" onclick="checkOne('q3','b','q3-fb','Communication adaptée aux publics : collaborateurs & élus (CSE).')">Valider</button>
+            <div id="q3-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q4/8</p>
+            <p class="mt-2">Le suivi du parcours collaborateur permet surtout de…</p>
+            <label class="block mt-2"><input type="radio" name="q4" value="a"> Réduire les coûts de formation</label>
+            <label class="block mt-1"><input type="radio" name="q4" value="b"> Augmenter les procédures disciplinaires</label>
+            <label class="block mt-1"><input type="radio" name="q4" value="c"> Améliorer la satisfaction et fidéliser</label>
+            <button class="btn mt-2" onclick="checkOne('q4','c','q4-fb','Le suivi bout‑en‑bout contribue à satisfaction & fidélisation.')">Valider</button>
+            <div id="q4-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q5/8</p>
+            <p class="mt-2">Laquelle n’est pas une qualité essentielle d’un conseiller paie ?</p>
+            <label class="block mt-2"><input type="radio" name="q5" value="a"> Savoir communiquer</label>
+            <label class="block mt-1"><input type="radio" name="q5" value="b"> Savoir développer des interfaces informatiques</label>
+            <label class="block mt-1"><input type="radio" name="q5" value="c"> Savoir argumenter</label>
+            <button class="btn mt-2" onclick="checkOne('q5','b','q5-fb','Le développement n’est pas requis ; l’important est de s’entourer.')">Valider</button>
+            <div id="q5-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q6/8</p>
+            <p class="mt-2">Outil efficace pour communiquer la politique RH aux collaborateurs ?</p>
+            <label class="block mt-2"><input type="radio" name="q6" value="a"> Newsletter</label>
+            <label class="block mt-1"><input type="radio" name="q6" value="b"> Publicités télévisées</label>
+            <label class="block mt-1"><input type="radio" name="q6" value="c"> Panneaux d’affichage externes</label>
+            <button class="btn mt-2" onclick="checkOne('q6','a','q6-fb','Newsletter : ciblée, régulière, pédagogique.')">Valider</button>
+            <div id="q6-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q7/8</p>
+            <p class="mt-2">Pourquoi le/la GRP doit participer au recrutement ?</p>
+            <label class="block mt-2"><input type="radio" name="q7" value="a"> Garantir la conformité légale des contrats</label>
+            <label class="block mt-1"><input type="radio" name="q7" value="b"> Augmenter le budget RH</label>
+            <label class="block mt-1"><input type="radio" name="q7" value="c"> Gérer les relations fournisseurs</label>
+            <button class="btn mt-2" onclick="checkOne('q7','a','q7-fb','Participation = conformité des contrats et alignement norme interne.')">Valider</button>
+            <div id="q7-fb" class="ok"></div>
+          </div>
+
+          <div class="q">
+            <p class="font-semibold">Q8/8</p>
+            <p class="mt-2">Objectif principal d’un audit de conformité paie/RH ?</p>
+            <label class="block mt-2"><input type="radio" name="q8" value="a"> Augmenter les bénéfices</label>
+            <label class="block mt-1"><input type="radio" name="q8" value="b"> Vérifier le respect des obligations légales et sociales</label>
+            <label class="block mt-1"><input type="radio" name="q8" value="c"> Réduire le nombre d’employés</label>
+            <button class="btn mt-2" onclick="checkOne('q8','b','q8-fb','But : détecter/rectifier les non‑conformités et prévenir les litiges.')">Valider</button>
+            <div id="q8-fb" class="ok"></div>
+          </div>
+
+          <div class="flex items-center gap-3 mt-4">
+            <button class="btn alt" onclick="computeScore()">🎯 Calculer mon score</button>
+            <span id="score-out" class="pill"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal Diplôme -->
+  <div id="modal" class="modal">
+    <div class="modal-card">
+      <h3 id="modal-title" class="text-2xl mb-2 title-diplome">🎖️ Diplôme</h3>
+      <p id="modal-msg" class="text-slate-800"></p>
+      <div class="text-right mt-4"><button class="btn" onclick="closeModal()">Fermer</button></div>
+    </div>
   </div>
 
 <script>
-  const tabs = document.querySelectorAll('.tab');
-  const contentEl = document.getElementById('content');
-
-  // Intégralité du contenu texte complet des sections du document PDF réparti par onglets
-  const contents = {
-    1: `
-      <h2>Contexte</h2>
-      <p>L’importante évolution des ressources humaines, du rôle administratif au rôle stratégique.</p>
-      <p>Naissance des services du personnel à la fin du XIXe siècle parallèlement à l’avènement du salariat, avec contrôle et organisation scientifique du travail.</p>
-      <p>Composition des missions après la Première Guerre mondiale : organisation, droit social, gestion des conflits, fidélisation via rémunération.</p>
-      <p>Évolution post-Seconde Guerre mondiale avec la prise en compte des facteurs humains et psychologiques (Maslow, relations humaines).</p>
-      <p>Les années 1980-90 : affirmation de la fonction RH comme stratégique et forte montée en compétences.</p>
-      <p>Reconnaissance des RH au comité de direction et apparition d’experts internes et externes.</p>
-    `,
-    2: `
-      <h2>Une expertise au service de la Direction</h2>
-      <h3>Un rôle de conseil et d’accompagnement : le bras droit du dirigeant</h3>
-      <p>Le gestionnaire de paie devient un partenaire stratégique capable d’accompagner la direction dans la définition et la mise en œuvre d’une politique RH.</p>
-      <h4>Identifier les besoins</h4>
-      <p>Réaliser un audit complet : gestion des talents, performance, conformité, communication, rémunération.</p>
-      <h4>Émergence de nouveaux métiers</h4>
-      <p>Spécialistes apparus avec le développement du conseil en RH : Responsable Comp&Ben, Consultant RH, Juriste social.</p>
-      <div class="example"><strong>Exemple :</strong> Une PME fait appel à un Consultant Comp&Ben et au gestionnaire de paie pour un nouveau système de rémunération.</div>
-    `,
-    3: `
-      <h2>Rôle de préventeur du risque</h2>
-      <h3>Identification et évaluation des risques</h3>
-      <p>Audit de conformité, suivis d’indicateurs (turnover, absentéisme, prud’hommes), mise en place d’alertes.</p>
-      <h3>Être force de proposition</h3>
-      <p>Mise en place de procédures disciplinaires, garde-fous paie, formations aux risques psychosociaux, assurance.</p>
-      <div class="example"><strong>Exemple :</strong> Mise en place d’un suivi rigoureux des heures supplémentaires pour réduire les litiges.</div>
-    `,
-    4: `
-      <h2>Communication comme véhicule de promotion de la stratégie</h2>
-      <h3>Communication aux collaborateurs</h3>
-      <p>Informer, sensibiliser, associer via newsletters, intranet, affichage, réunions.</p>
-      <div class="example"><strong>Exemple :</strong> Newsletter sur les titres restaurant et leur impact sur la paie.</div>
-      <h3>Communication aux élus</h3>
-      <p>Informer, consulter et négocier lors des réunions CSE et conseils sociaux.</p>
-      <div class="example"><strong>Exemple :</strong> Présentation et débat sur une nouvelle grille de rémunération au CSE.</div>
-    `,
-    5: `
-      <h2>Cas pratique : conseil à l’employeur</h2>
-      <p>Entreprise "À la bonne heure" avec turnover de 25% dans le service commercial.</p>
-      <p>Analyse des motifs : manque d’évolution, salaires bas, mauvaise ambiance.</p>
-      <p>Propositions : plan de formation, étude rémunération, team building, exit interviews.</p>
-      <p>Résultats : baisse du turnover, amélioration du climat, suivi à poursuivre.</p>
-    `,
-    6: `
-      <h2>Expertise au service du parcours du collaborateur</h2>
-      <h3>Assistance aux managers</h3>
-      <p>Gestion disciplinaire, entretiens, absences, prévention RPS, gestion du changement.</p>
-      <div class="example"><strong>Exemple :</strong> Soutien à la mise en place d’un nouveau système de gestion du temps.</div>
-      <h3>Assistance aux équipes RH</h3>
-      <p>Formations spécialisées, accompagnement des situations atypiques (PSE, contentieux prud’homal).</p>
-      <h3>Assistance aux collaborateurs</h3>
-      <p>Compréhension du bulletin, gestion congés, démarches, parcours complet jusqu’au départ.</p>
-      <div class="example"><strong>Exemple :</strong> Explication détaillée fiche de paie, simulation droits retraite.</div>
-    `,
-    7: `
-      <h2>L’essentiel</h2>
-      <p>Le gestionnaire de paie est pivot stratégique, expert technique et juridique, conseillant direction, managers et collaborateurs.</p>
-      <p>Il accompagne les évolutions, valorise le capital humain, et met en œuvre la stratégie RH.</p>
-      <p>Compétences en communication et pédagogie indispensables.</p>
-    `,
-    8: `
-      <h2>Auto-évaluation : Quiz RH</h2>
-      <div class="quiz" id="quiz-section"></div>
-    `
-  };
-
-  const quizQuestions = [
-    {
-      question: "Quel est le premier pas pour établir une politique de rémunération efficace ?",
-      options: ["Réaliser un audit", "Mettre en place des procédures disciplinaires", "Former les managers"],
-      answer: 0
-    },
-    {
-      question: "Quel métier définit un spécialiste de la rémunération ?",
-      options: ["Consultant RH", "Juriste social", "Responsable Comp&Ben"],
-      answer: 2
-    },
-    {
-      question: "Qui doit être informé dans une communication RH efficace ?",
-      options: ["Uniquement la direction", "Collaborateurs et élus", "Public externe uniquement"],
-      answer: 1
-    },
-    {
-      question: "Le suivi du parcours collaborateur permet de :",
-      options: ["Améliorer satisfaction et fidéliser les talents", "Réduire les coûts de formation", "Augmenter les procédures disciplinaires"],
-      answer: 0
-    },
-    {
-      question: "Parmi ces propositions, laquelle ne correspond pas à une qualité attendue chez un conseiller en paie ?",
-      options: ["Savoir communiquer", "Développer des interfaces informatiques", "Savoir argumenter"],
-      answer: 1
-    },
-    {
-      question: "Quel outil le gestionnaire de paie utilise-t-il pour communiquer efficacement sur la politique RH ?",
-      options: ["Newsletter", "Publicités télévisées", "Panneaux d’affichage externes"],
-      answer: 0
-    },
-    {
-      question: "Pourquoi est-il important pour le gestionnaire de paie de participer au recrutement ?",
-      options: ["Garantir conformité légale des contrats", "Augmenter le budget RH", "Gérer les relations fournisseurs"],
-      answer: 0
-    },
-    {
-      question: "Quel est l’objectif principal de l’audit de conformité ?",
-      options: ["Augmenter les bénéfices", "Vérifier le respect des obligations légales", "Réduire le nombre d’employés"],
-      answer: 1
-    }
-  ];
-
-  let currentQuiz = 0;
-  let score = 0;
-
-  function renderQuiz() {
-    const quizEl = document.getElementById('quiz-section');
-    if (!quizEl) return;
-    if (currentQuiz >= quizQuestions.length) {
-      quizEl.innerHTML = `<div class="result">Votre score : ${score} / ${quizQuestions.length}</div>`;
-      return;
-    }
-    const q = quizQuestions[currentQuiz];
-    quizEl.innerHTML = `<h3>${q.question}</h3>` +
-      q.options.map((opt, idx) =>
-        `<button onclick="answerQuiz(${idx})">${opt}</button>`
-      ).join('');
+  function toggle(h){
+    const c=h.nextElementSibling; const i=h.querySelector('.icon');
+    const isOpen = c.classList.contains('open');
+    if(!isOpen){ c.classList.add('open'); c.style.maxHeight = c.scrollHeight + 'px'; i.classList.add('open'); }
+    else { c.style.maxHeight = null; c.classList.remove('open'); i.classList.remove('open'); }
   }
-
-  window.answerQuiz = function(idx) {
-    if (idx === quizQuestions[currentQuiz].answer) score++;
-    currentQuiz++;
-    renderQuiz();
-  };
-
-  function activateTab(index) {
-    tabs.forEach((tab, i) => {
-      if (i === index) {
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        tab.setAttribute('tabindex', '0');
-      } else {
-        tab.classList.remove('active');
-        tab.setAttribute('aria-selected', 'false');
-        tab.setAttribute('tabindex', '-1');
-      }
-    });
-    contentEl.innerHTML = contents[index + 1];
-    if (index + 1 === 8) {
-      currentQuiz = 0;
-      score = 0;
-      renderQuiz();
-    }
-  }
-
-  tabs.forEach((tab, idx) => {
-    tab.addEventListener('click', () => activateTab(idx));
-    tab.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') {
-        let next = (idx + 1) % tabs.length;
-        tabs[next].focus();
-      } else if (e.key === 'ArrowLeft') {
-        let prev = (idx - 1 + tabs.length) % tabs.length;
-        tabs[prev].focus();
-      } else if (e.key === 'Enter' || e.key === ' ') {
-        activateTab(idx);
-      }
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const headers = document.querySelectorAll('.card .hdr');
+    if (headers.length > 0) toggle(headers[0]);
   });
 
-  activateTab(0);
+  // Helpers
+  function n(v){ return isNaN(parseFloat(v))?0:parseFloat(v); }
+
+  // Outil 1: Générateur de checklist d’audit RH
+  function genAudit(){
+    const foc=document.getElementById('au-foc').value;
+    const format=document.getElementById('au-format').value;
+    const bank={
+      perf:['Suivi des KPIs (absentéisme, turnover, AT/MP)','Analyse coûts RH & ROI dispositifs','Optimisation processus paie'],
+      conf:['Vérif obligations légales & conventionnelles','Contrôles périodiques paramétrage paie','Traçabilité & archivage documentaire'],
+      talent:['Cartographie des compétences','Plan de dev & mobilité','Benchmark rémunérations'],
+      com:['Canaux internes (intranet/newsletter)','Réunions & FAQ','Mesure de compréhension collaborateurs'],
+      rem:['Politique salariale & variable','Avantages sociaux (TR, mutuelle, etc.)','Équité interne & compétitivité marché']
+    };
+    let items=[];
+    if(foc==='all'){ items=[...bank.perf,...bank.conf,...bank.talent,...bank.com,...bank.rem]; }
+    else { items=bank[foc]||[]; }
+    const el=document.getElementById('out-audit');
+    el.style.display='block'; el.className='ok good';
+    if(format==='todo'){
+      el.innerHTML='<strong>Checklist :</strong><br>'+items.map(i=>`<label class="block"><input type="checkbox"> ${i}</label>`).join('');
+    } else {
+      el.innerHTML='<table class="tbl text-sm"><thead><tr><th>Élément</th><th>Statut</th><th>Commentaires</th></tr></thead><tbody>'+
+        items.map(i=>`<tr><td>${i}</td><td>À faire</td><td></td></tr>`).join('')+"</tbody></table>";
+    }
+  }
+
+  // Outil 2: Matrice des risques
+  const risks=[];
+  function addRisk(){
+    const name=document.getElementById('rk-name').value||'Risque';
+    const p=Math.min(5,Math.max(1,n(document.getElementById('rk-prob').value)));
+    const i=Math.min(5,Math.max(1,n(document.getElementById('rk-imp').value)));
+    const act=document.getElementById('rk-act').value||'Actions à définir';
+    const score=p*i; risks.push({name,p,i,score,act});
+    risks.sort((a,b)=>b.score-a.score);
+    const rows=risks.map(r=>`<tr><td>${r.name}</td><td>${r.p}</td><td>${r.i}</td><td><strong>${r.score}</strong></td><td>${r.act}</td></tr>`).join('');
+    const el=document.getElementById('out-risk');
+    el.style.display='block'; el.className='ok good';
+    el.innerHTML='<table class="tbl text-sm"><thead><tr><th>Risque</th><th>Prob.</th><th>Impact</th><th>Score</th><th>Mesures</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  }
+
+  // Outil 3: Plan de communication
+  function buildPlan(){
+    const cible=document.getElementById('pc-cible').value;
+    const canal=document.getElementById('pc-canal').value;
+    const msg=document.getElementById('pc-msg').value||'Message';
+    const tone = cible==='elus' ? 'formel & argumenté' : 'pédagogique & concret';
+    const el=document.getElementById('out-plan');
+    el.style.display='block'; el.className='ok good';
+    el.innerHTML=`Plan de com’ → Public: <strong>${cible==='elus'?'Élus (CSE)':'Collaborateurs'}</strong> • Canal: <strong>${canal}</strong> • Ton: <strong>${tone}</strong><br>Message clé: ${msg}`;
+  }
+
+  // Outil 4: Cas pratique – Turnover
+  function checkCase(){
+    const txt=(document.getElementById('cp-text').value||'').toLowerCase();
+    const ok = ['compétence','formation','rémunération','benchmark','qvt','ambiance','exit','interview','mobilité','variable'].some(k=>txt.includes(k));
+    const el=document.getElementById('out-cp');
+    el.style.display='block'; el.className='ok '+(ok?'good':'bad');
+    el.innerText = ok ? '✅ Bonne approche : combine leviers rémunération/compétences/QVT + mesure (turnover, ancienneté).' : '❗ Ajoute au moins 3 leviers (compétences, rémunération, QVT/ambiance, exit interviews, etc.).';
+  }
+  // (section Pièce jointe gérée par lien cliquable)
+
+  // QUIZ – vérification immédiate
+  const right={q1:'a',q2:'a',q3:'b',q4:'c',q5:'b',q6:'a',q7:'a',q8:'b'};
+  const done={};
+  function checkOne(name,good,fbId,explain){
+    const radios=document.getElementsByName(name);
+    let v=null; for(const r of radios){ if(r.checked){ v=r.value; break; }}
+    const fb=document.getElementById(fbId);
+    if(!v){ fb.className='ok bad'; fb.innerText='❗ Sélectionne une réponse.'; return; }
+    if(v===good){ fb.className='ok good'; fb.innerText='👍 Bonne réponse ! '+explain; done[name]=true; }
+    else { fb.className='ok bad'; fb.innerText='👎 Incorrect. '+explain; done[name]=false; }
+  }
+
+  // Score + confettis + modale
+  function computeScore(){
+    let score=0, total=8;
+    Object.keys(right).forEach(k=>{ if(done[k]) score++; });
+    const pct=Math.round(score/total*100);
+    document.getElementById('score-out').innerText=`Score : ${score}/8 (${pct}%)`;
+    if(pct>=75){
+      launchConfetti();
+      openModal('🎖️ Diplôme obtenu !','Bravo 🎉 '+pct+'% : tu maîtrises le rôle conseil, la prévention des risques et la com’.');
+    } else if(pct>=50){
+      openModal('💪 Bien joué','Tu es à '+pct+'%. Revois audit/politique RH et la matrice des risques, puis retente.');
+    } else {
+      openModal('📘 Relecture conseillée','Tu es à '+pct+'%. Reprends les sections Direction/Risques/Com et refais le quiz.');
+    }
+  }
+  function openModal(title,msg){
+    document.getElementById('modal-title').innerText=title;
+    document.getElementById('modal-msg').innerText=msg;
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+
+  // Confettis minimalistes
+  function launchConfetti(){
+    const colors=['#2563eb','#06b6d4','#22c55e','#f59e0b','#ec4899','#8b5cf6','#0f172a'];
+    const n=120;
+    for(let i=0;i<n;i++){
+      const conf=document.createElement('div');
+      conf.className='confetti';
+      conf.style.left=Math.random()*100+'vw';
+      conf.style.background=colors[Math.floor(Math.random()*colors.length)];
+      conf.style.transform=`rotate(${Math.random()*360}deg)`;
+      conf.style.animation=`fall  ${3+Math.random()*2}s linear forwards`;
+      document.body.appendChild(conf);
+      setTimeout(()=>conf.remove(),6000);
+    }
+  }
+  const style=document.createElement('style');
+  style.innerHTML='@keyframes fall{to{transform:translateY(110vh) rotate(720deg); opacity:.95}}';
+  document.head.appendChild(style);
 </script>
 </body>
 </html>
