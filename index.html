@@ -21,7 +21,9 @@
     .hdr{cursor:pointer; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; border-radius:1.25rem}
     .hdr:hover{background:#0f172a}
     .cnt{max-height:0; overflow:hidden; transition:max-height .5s ease, padding .5s ease; padding:0 1.25rem}
-    .cnt.open{padding-bottom:1.25rem}
+    .cnt.open{max-height:70vh; overflow:auto; padding-bottom:1.25rem}
+    @media (max-width: 767px){.cnt.open{max-height:60vh}}
+    @media (min-width: 1024px){.cnt.open{max-height:80vh}}
     .icon{transition:transform .3s ease; color:#94a3b8}
     .icon.open{transform:rotate(180deg)}
     .box{background:#0b1226; border-left:4px solid var(--blue); border-radius:.9rem; padding:1rem; margin-top:1rem; border:1px solid #243042}
@@ -485,8 +487,8 @@
   function toggle(h){
     const c=h.nextElementSibling; const i=h.querySelector('.icon');
     const isOpen = c.classList.contains('open');
-    if(!isOpen){ c.classList.add('open'); c.style.maxHeight = c.scrollHeight + 'px'; i.classList.add('open'); }
-    else { c.style.maxHeight = null; c.classList.remove('open'); i.classList.remove('open'); }
+    if(!isOpen){ c.classList.add('open'); i.classList.add('open'); c.scrollTop=0; }
+    else { c.classList.remove('open'); i.classList.remove('open'); }
   }
   document.addEventListener('DOMContentLoaded', () => {
     const headers = document.querySelectorAll('.card .hdr');
