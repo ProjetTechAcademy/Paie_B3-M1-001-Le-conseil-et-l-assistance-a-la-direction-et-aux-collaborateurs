@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Conseil & Assistance RH</title>
+  <style>
+    body {
+      background: #f1f4f6;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .app-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px #0001;
+    }
+    h1 {
+      text-align: center;
+      color: #50505a;
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem 0;
+    }
+    nav button {
+      flex: 1;
+      margin: 0 0.3rem;
+      padding: 1rem 0;
+      border-radius: 2rem;
+      border: none;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 6px #0002;
+      transition: opacity 0.2s;
+    }
+    nav button.direction {
+      background: #4dabf7;
+    }
+    nav button.manager {
+      background: #74c69d;
+    }
+    nav button.rh {
+      background: #f9c74f;
+      color: #a15e00;
+    }
+    nav button.collab {
+      background: #f896a1;
+    }
+    #content-section {
+      margin: 2rem 0 1rem 0;
+      min-height: 140px;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #eef2f5;
+      box-shadow: 0 1px 3px #0001;
+    }
+    .testrh-module {
+      background: #e9ecef;
+      padding: 1.2rem;
+      border-radius: 1rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .testrh-module button {
+      background: #4dabf7;
+      color: #fff;
+      margin: 0.3rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 1rem;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .testrh-module button:hover {
+      background: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <h1>Conseil & Assistance RH</h1>
+    <nav>
+      <button class="direction" onclick="showSection('direction')">Direction</button>
+      <button class="manager" onclick="showSection('manager')">Managers</button>
+      <button class="rh" onclick="showSection('rh')">RH</button>
+      <button class="collab" onclick="showSection('collab')">Collaborateurs</button>
+    </nav>
+    <main id="content-section"></main>
+    <section class="testrh-module" id="testrh-module"></section>
+  </div>
+  <script>
+    // Contenus par rubrique (exemple inspiré du document)
+    const sections = {
+      direction: `<h2>Conseil à la Direction</h2>
+        <ul>
+          <li>Audit RH</li>
+          <li>Politique de rémunération et avantages sociaux</li>
+          <li>Conseil juridique et social</li>
+        </ul>
+        <p>Un expert RH accompagne la direction dans la stratégie et la prévention des risques.</p>`,
+      manager: `<h2>Assistance aux Managers</h2>
+        <ul>
+          <li>Gestion d’équipes</li>
+          <li>Déploiement des processus RH</li>
+          <li>Accompagnement dans la résolution de conflits</li>
+        </ul>
+        <p>Le RH conseille et forme les managers au quotidien.</p>`,
+      rh: `<h2>Appui aux RH</h2>
+        <ul>
+          <li>Formation</li>
+          <li>Prise en charge de cas complexes</li>
+        </ul>
+        <p>Le service RH bénéficie d’un support pour tous les défis spécifiques.</p>`,
+      collab: `<h2>Support aux Collaborateurs</h2>
+        <ul>
+          <li>Explication du bulletin de paie</li>
+          <li>Gestion des congés et absences</li>
+          <li>Information sur les droits sociaux</li>
+        </ul>
+        <p>Des réponses claires à toutes les questions des collaborateurs.</p>`
+    };
+
+    function showSection(key) {
+      const content = sections[key];
+      document.getElementById('content-section').innerHTML = content;
+    }
+
+    // Affichage par défaut
+    window.onload = function() {
+      showSection('direction');
+      initTestRH();
+    };
+
+    // Quiz RH
+    function initTestRH() {
+      const questions = [
+        {
+          q: "Quel est le premier pas dans l'établissement d'une politique de rémunération efficace ?",
+          a: ["Audit RH", "Procédures disciplinaires", "Former les managers"],
+          r: 0
+        },
+        {
+          q: "Qui est l'expert CompBen ?",
+          a: ["Consultant RH", "Juriste social", "Spécialiste de la rémunération"],
+          r: 2
+        }
+      ];
+      let current = 0, score = 0;
+
+      function renderQuestion() {
+        if (current >= questions.length) {
+          document.getElementById('testrh-module').innerHTML =
+            `<h2>Résultat</h2><p>Score : ${score} / ${questions.length}</p>`;
+          return;
+        }
+        const q = questions[current];
+        document.getElementById('testrh-module').innerHTML =
+          `<h2>Test RH express</h2>
+          <p>${q.q}</p>
+          <div>${q.a.map((ans,i)=>
+            `<button onclick="window.testrhAnswer(${i})">${ans}</button>`).join('')}
+          </div>`;
+      }
+      window.testrhAnswer = function(idx) {
+        if(idx === questions[current].r) score++;
+        current++;
+        renderQuestion();
+      };
+      renderQuestion();
+    }
+  </script>
+</body>
+</html>
