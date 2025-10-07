@@ -1,241 +1,332 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs</title>
-  <style>
-    body {
-      background: #f1f4f6;
-      font-family: 'Montserrat', Arial, sans-serif;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs - Intégral et Interactif</title>
+<style>
+  body {
+    background: #f1f4f6;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0; padding: 0;
+  }
+  .app-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding: 2rem;
+    min-height: 600px;
+  }
+  h1 {
+    text-align: center;
+    color: #2b4a63;
+    margin-bottom: 1rem;
+  }
+  .doc-link {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .doc-link a {
+    color: #2980b9;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  .tab {
+    flex: 1;
+    padding: 0.8rem;
+    margin: 0 0.3rem;
+    text-align: center;
+    cursor: pointer;
+    background: #cee4fb;
+    border-radius: 2rem 2rem 0 0;
+    font-weight: bold;
+    color: #155d95;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .tab.active {
+    background: #2980b9;
+    color: white;
+    box-shadow: inset 0 -3px 0 0 white;
+  }
+  main.content {
+    background: #eef2f5;
+    border-radius: 0 1rem 1rem 1rem;
+    padding: 1.5rem;
+    min-height: 500px;
+    box-shadow: inset 0 1px 4px #acd0ffdd;
+    overflow-y: auto;
+  }
+  h2 {
+    color: #1e3d59;
+    margin-top: 0;
+  }
+  h3 {
+    margin-top: 1rem;
+    color: #335d7e;
+  }
+  ul {
+    margin-left: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .example {
+    background: #fce4ec;
+    border-left: 5px solid #f06292;
+    padding: 0.9rem 1rem;
+    margin: 1rem 0 1.5rem;
+    font-style: italic;
+    color: #6b2734;
+  }
+  .quiz {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .quiz button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 1.2rem;
+    font-weight: 600;
+    margin: 0.4rem 0.5rem;
+    cursor: pointer;
+    min-width: 150px;
+    transition: background-color 0.3s ease;
+  }
+  .quiz button:hover {
+    background: #1f6fa4;
+  }
+  .quiz h3 {
+    color: #154c79;
+  }
+  .result {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2a5a7a;
+    margin-top: 1rem;
+  }
+  @media (max-width: 720px) {
+    .tab {
+      font-size: 0.85rem;
+      padding: 0.7rem 0.4rem;
     }
-    .app-container {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 1rem;
-      max-width: 900px;
-      margin: 2rem auto;
-      box-shadow: 0 4px 12px #0001;
-    }
-    h1 {
-      text-align: center;
-      color: #3c6078;
-      margin-bottom: 0.5rem;
-    }
-    .doc-link {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-    .doc-link a {
-      color: #3991ab;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-    .section-title {
-      background: linear-gradient(90deg,#4dabf7,#74c69d);
-      color: #fff;
-      border-radius: 0.7rem;
-      padding: 0.6rem 1rem;
-      margin-bottom: 1.2rem;
-      font-size: 1.3rem;
-    }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      margin: 1rem 0;
-    }
-    nav button {
-      flex: 1;
-      margin: 0 0.3rem;
-      padding: 1rem 0;
-      border-radius: 2rem;
-      border: none;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      font-size: 1.1rem;
-      box-shadow: 0 2px 6px #0002;
-      transition: opacity 0.2s;
-    }
-    nav button.direction { background: #4dabf7; }
-    nav button.manager { background: #74c69d; }
-    nav button.rh { background: #f9c74f; color: #a15e00; }
-    nav button.collab { background: #f896a1; }
-    #content-section {
-      margin: 2rem 0 1rem 0;
-      min-height: 180px;
-      padding: 1rem;
-      border-radius: 1rem;
-      background: #eef2f5;
-      box-shadow: 0 1px 3px #0001;
-    }
-    .testrh-module {
-      background: #e9ecef;
-      padding: 1.2rem;
-      border-radius: 1rem;
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .testrh-module button {
-      background: #4dabf7;
-      color: #fff;
-      margin: 0.3rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: 1rem;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
-    .testrh-module button:hover {
-      background: #1976d2;
-    }
-    .example {
-      background: #fde2ed;
-      color: #83275d;
-      padding: 0.7rem 1rem;
-      margin: 1rem 0;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      box-shadow: 0 1px 5px #0001;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <div class="app-container">
     <h1>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs</h1>
     <div class="doc-link">
-      <strong>Document PDF support :</strong>
-      <a href="https://drive.google.com/file/d/1EQvkQ5EU2Y8F1Mwx-WqVs7jbbN87rsHS/view?usp=drive_link" target="_blank">Paie_B3_M1_001_Le conseil et l’assistance à la direction et aux collaborateurs</a>
+      <a href="https://drive.google.com/file/d/1EQvkQ5EU2Y8F1Mwx-WqVs7jbbN87rsHS/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Télécharger le document PDF complet</a>
     </div>
-    <div class="section-title">Explorer les rôles et missions RH</div>
-    <nav>
-      <button class="direction" onclick="showSection('direction')">Direction</button>
-      <button class="manager" onclick="showSection('manager')">Managers</button>
-      <button class="rh" onclick="showSection('rh')">RH</button>
-      <button class="collab" onclick="showSection('collab')">Collaborateurs</button>
-    </nav>
-    <main id="content-section"></main>
-    <section class="testrh-module" id="testrh-module"></section>
+
+    <div class="tabs" role="tablist" aria-label="Sections du document interactif">
+      <div class="tab active" role="tab" tabindex="0" id="tab-1" aria-controls="panel-1" aria-selected="true">Contexte</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-2" aria-controls="panel-2" aria-selected="false">Expertise Direction</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-3" aria-controls="panel-3" aria-selected="false">Prévention des risques</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-4" aria-controls="panel-4" aria-selected="false">Communication</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-5" aria-controls="panel-5" aria-selected="false">Cas pratique</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-6" aria-controls="panel-6" aria-selected="false">Parcours collaborateur</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-7" aria-controls="panel-7" aria-selected="false">L’essentiel</div>
+      <div class="tab" role="tab" tabindex="-1" id="tab-8" aria-controls="panel-8" aria-selected="false">Auto-évaluation</div>
+    </div>
+
+    <main tabindex="0" role="tabpanel" id="content" aria-labelledby="tab-1" class="content">
+      <!-- contenu dynamique -->
+    </main>
   </div>
-  <script>
-    const sections = {
-      direction: `
-        <h2>Conseil & accompagnement auprès de la direction</h2>
-        <p>
-          L’expertise du gestionnaire de paie est désormais un levier stratégique pour la direction.
-          Il réalise des audits RH, définit avec la direction les politiques de gestion des talents et de rémunération,
-          propose des solutions pour optimiser les coûts et dynamiser la stratégie RH.<br>
-          <strong>Actions principales :</strong>
-        </p>
-        <ul>
-          <li>Réalisation d'audits sur les pratiques RH et la conformité</li>
-          <li>Élaboration et mise en œuvre de la politique RH adaptée aux besoins de l'entreprise</li>
-          <li>Prévention et gestion des risques sociaux : analyse, veille juridique, matrice de risques</li>
-          <li>Force de proposition auprès du dirigeant : outils, équipes, organisation</li>
-        </ul>
-        <div class="example"><strong>Exemple :</strong> Proposition d’un plan d’action pour réduire le turnover, optimisation de la grille salariale, animation d’ateliers stratégiques.</div>
-      `,
-      manager: `
-        <h2>Appui et assistance aux managers</h2>
-        <p>
-          Le gestionnaire de paie accompagne les managers dans leur quotidien :
-          procédures disciplinaires, gestion des absences, entretiens annuels, prévention des risques psychosociaux (RPS).
-          Il forme, conseille, anime sur la conduite du changement et l’amélioration du climat social.
-        </p>
-        <ul>
-          <li>Accompagnement sur les entretiens et évaluations</li>
-          <li>Actions de sensibilisation aux RPS et gestion des conflits</li>
-          <li>Conseils aux managers sur la conformité sociale et légale</li>
-        </ul>
-        <div class="example"><strong>Exemple :</strong> Intervention lors de la mise en place d’un nouveau logiciel RH ou d’une politique de gestion du temps, formation à la gestion du stress.</div>
-      `,
-      rh: `
-        <h2>Appui technique à l’équipe RH</h2>
-        <p>
-          Le gestionnaire de paie forme les équipes RH sur les logiciels, le droit du travail, les évolutions légales et les pratiques de paie.
-          Il intervient sur des problématiques complexes (PSE, litiges), propose des audits internes et externalisés.
-        </p>
-        <ul>
-          <li>Formation continue (logiciels, droit du travail, négociation)</li>
-          <li>Veille juridique et accompagnement dans la gestion des contentieux</li>
-          <li>Soutien technique et conseil lors de réorganisations ou de PSE</li>
-        </ul>
-        <div class="example"><strong>Exemple :</strong> Organisation de sessions juridiques sur la réforme du Code du travail ou de workshops paie poussés.</div>
-      `,
-      collab: `
-        <h2>Assistance individuelle aux collaborateurs</h2>
-        <p>
-          Le gestionnaire de paie répond aux interrogations courantes (fiche de paie, congés), aide à comprendre les droits sociaux, accompagne tout au long du parcours professionnel et dans les démarches administratives ou juridiques.
-        </p>
-        <ul>
-          <li>Explication détaillée du bulletin de salaire</li>
-          <li>Assistance sur les congés, absences, retraite, changement de situation</li>
-          <li>Accompagnement sur les questions juridiques et sociales</li>
-        </ul>
-        <div class="example"><strong>Exemple :</strong> Explication personnalisée de chaque ligne de la fiche de paie lors d’une embauche ou simulation des droits à la retraite.</div>
-      `
-    };
 
-    function showSection(key) {
-      const content = sections[key];
-      document.getElementById('content-section').innerHTML = content;
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const contentEl = document.getElementById('content');
+
+  // Intégralité du contenu texte complet des sections du document PDF réparti par onglets
+  const contents = {
+    1: `
+      <h2>Contexte</h2>
+      <p>L’importante évolution des ressources humaines, du rôle administratif au rôle stratégique.</p>
+      <p>Naissance des services du personnel à la fin du XIXe siècle parallèlement à l’avènement du salariat, avec contrôle et organisation scientifique du travail.</p>
+      <p>Composition des missions après la Première Guerre mondiale : organisation, droit social, gestion des conflits, fidélisation via rémunération.</p>
+      <p>Évolution post-Seconde Guerre mondiale avec la prise en compte des facteurs humains et psychologiques (Maslow, relations humaines).</p>
+      <p>Les années 1980-90 : affirmation de la fonction RH comme stratégique et forte montée en compétences.</p>
+      <p>Reconnaissance des RH au comité de direction et apparition d’experts internes et externes.</p>
+    `,
+    2: `
+      <h2>Une expertise au service de la Direction</h2>
+      <h3>Un rôle de conseil et d’accompagnement : le bras droit du dirigeant</h3>
+      <p>Le gestionnaire de paie devient un partenaire stratégique capable d’accompagner la direction dans la définition et la mise en œuvre d’une politique RH.</p>
+      <h4>Identifier les besoins</h4>
+      <p>Réaliser un audit complet : gestion des talents, performance, conformité, communication, rémunération.</p>
+      <h4>Émergence de nouveaux métiers</h4>
+      <p>Spécialistes apparus avec le développement du conseil en RH : Responsable Comp&Ben, Consultant RH, Juriste social.</p>
+      <div class="example"><strong>Exemple :</strong> Une PME fait appel à un Consultant Comp&Ben et au gestionnaire de paie pour un nouveau système de rémunération.</div>
+    `,
+    3: `
+      <h2>Rôle de préventeur du risque</h2>
+      <h3>Identification et évaluation des risques</h3>
+      <p>Audit de conformité, suivis d’indicateurs (turnover, absentéisme, prud’hommes), mise en place d’alertes.</p>
+      <h3>Être force de proposition</h3>
+      <p>Mise en place de procédures disciplinaires, garde-fous paie, formations aux risques psychosociaux, assurance.</p>
+      <div class="example"><strong>Exemple :</strong> Mise en place d’un suivi rigoureux des heures supplémentaires pour réduire les litiges.</div>
+    `,
+    4: `
+      <h2>Communication comme véhicule de promotion de la stratégie</h2>
+      <h3>Communication aux collaborateurs</h3>
+      <p>Informer, sensibiliser, associer via newsletters, intranet, affichage, réunions.</p>
+      <div class="example"><strong>Exemple :</strong> Newsletter sur les titres restaurant et leur impact sur la paie.</div>
+      <h3>Communication aux élus</h3>
+      <p>Informer, consulter et négocier lors des réunions CSE et conseils sociaux.</p>
+      <div class="example"><strong>Exemple :</strong> Présentation et débat sur une nouvelle grille de rémunération au CSE.</div>
+    `,
+    5: `
+      <h2>Cas pratique : conseil à l’employeur</h2>
+      <p>Entreprise "À la bonne heure" avec turnover de 25% dans le service commercial.</p>
+      <p>Analyse des motifs : manque d’évolution, salaires bas, mauvaise ambiance.</p>
+      <p>Propositions : plan de formation, étude rémunération, team building, exit interviews.</p>
+      <p>Résultats : baisse du turnover, amélioration du climat, suivi à poursuivre.</p>
+    `,
+    6: `
+      <h2>Expertise au service du parcours du collaborateur</h2>
+      <h3>Assistance aux managers</h3>
+      <p>Gestion disciplinaire, entretiens, absences, prévention RPS, gestion du changement.</p>
+      <div class="example"><strong>Exemple :</strong> Soutien à la mise en place d’un nouveau système de gestion du temps.</div>
+      <h3>Assistance aux équipes RH</h3>
+      <p>Formations spécialisées, accompagnement des situations atypiques (PSE, contentieux prud’homal).</p>
+      <h3>Assistance aux collaborateurs</h3>
+      <p>Compréhension du bulletin, gestion congés, démarches, parcours complet jusqu’au départ.</p>
+      <div class="example"><strong>Exemple :</strong> Explication détaillée fiche de paie, simulation droits retraite.</div>
+    `,
+    7: `
+      <h2>L’essentiel</h2>
+      <p>Le gestionnaire de paie est pivot stratégique, expert technique et juridique, conseillant direction, managers et collaborateurs.</p>
+      <p>Il accompagne les évolutions, valorise le capital humain, et met en œuvre la stratégie RH.</p>
+      <p>Compétences en communication et pédagogie indispensables.</p>
+    `,
+    8: `
+      <h2>Auto-évaluation : Quiz RH</h2>
+      <div class="quiz" id="quiz-section"></div>
+    `
+  };
+
+  const quizQuestions = [
+    {
+      question: "Quel est le premier pas pour établir une politique de rémunération efficace ?",
+      options: ["Réaliser un audit", "Mettre en place des procédures disciplinaires", "Former les managers"],
+      answer: 0
+    },
+    {
+      question: "Quel métier définit un spécialiste de la rémunération ?",
+      options: ["Consultant RH", "Juriste social", "Responsable Comp&Ben"],
+      answer: 2
+    },
+    {
+      question: "Qui doit être informé dans une communication RH efficace ?",
+      options: ["Uniquement la direction", "Collaborateurs et élus", "Public externe uniquement"],
+      answer: 1
+    },
+    {
+      question: "Le suivi du parcours collaborateur permet de :",
+      options: ["Améliorer satisfaction et fidéliser les talents", "Réduire les coûts de formation", "Augmenter les procédures disciplinaires"],
+      answer: 0
+    },
+    {
+      question: "Parmi ces propositions, laquelle ne correspond pas à une qualité attendue chez un conseiller en paie ?",
+      options: ["Savoir communiquer", "Développer des interfaces informatiques", "Savoir argumenter"],
+      answer: 1
+    },
+    {
+      question: "Quel outil le gestionnaire de paie utilise-t-il pour communiquer efficacement sur la politique RH ?",
+      options: ["Newsletter", "Publicités télévisées", "Panneaux d’affichage externes"],
+      answer: 0
+    },
+    {
+      question: "Pourquoi est-il important pour le gestionnaire de paie de participer au recrutement ?",
+      options: ["Garantir conformité légale des contrats", "Augmenter le budget RH", "Gérer les relations fournisseurs"],
+      answer: 0
+    },
+    {
+      question: "Quel est l’objectif principal de l’audit de conformité ?",
+      options: ["Augmenter les bénéfices", "Vérifier le respect des obligations légales", "Réduire le nombre d’employés"],
+      answer: 1
     }
+  ];
 
-    window.onload = function() {
-      showSection('direction');
-      initTestRH();
-    };
+  let currentQuiz = 0;
+  let score = 0;
 
-    function initTestRH() {
-      const questions = [
-        {
-          q: "Quel est le premier pas pour établir une politique de rémunération efficace ?",
-          a: ["Audit RH", "Procédures disciplinaires", "Former les managers"],
-          r: 0
-        },
-        {
-          q: "Quel métier définit un spécialiste de la rémunération ?",
-          a: ["Consultant RH", "Juriste social", "Responsable CompBen"],
-          r: 2
-        },
-        {
-          q: "Qui doit être informé lors de la communication RH ?",
-          a: [
-            "Uniquement la direction",
-            "Les collaborateurs et les élus",
-            "Public externe uniquement"
-          ],
-          r: 1
-        }
-      ];
-      let current = 0, score = 0;
+  function renderQuiz() {
+    const quizEl = document.getElementById('quiz-section');
+    if (!quizEl) return;
+    if (currentQuiz >= quizQuestions.length) {
+      quizEl.innerHTML = `<div class="result">Votre score : ${score} / ${quizQuestions.length}</div>`;
+      return;
+    }
+    const q = quizQuestions[currentQuiz];
+    quizEl.innerHTML = `<h3>${q.question}</h3>` +
+      q.options.map((opt, idx) =>
+        `<button onclick="answerQuiz(${idx})">${opt}</button>`
+      ).join('');
+  }
 
-      function renderQuestion() {
-        if (current >= questions.length) {
-          document.getElementById('testrh-module').innerHTML =
-            `<h2>Résultat</h2><p>Score : ${score} / ${questions.length}</p>`;
-          return;
-        }
-        const q = questions[current];
-        document.getElementById('testrh-module').innerHTML =
-          `<h2>Quiz Synthèse RH</h2>
-          <p>${q.q}</p>
-          <div>${q.a.map((ans,i)=>
-            `<button onclick="window.testrhAnswer(${i})">${ans}</button>`).join('')}
-          </div>`;
+  window.answerQuiz = function(idx) {
+    if (idx === quizQuestions[currentQuiz].answer) score++;
+    currentQuiz++;
+    renderQuiz();
+  };
+
+  function activateTab(index) {
+    tabs.forEach((tab, i) => {
+      if (i === index) {
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+      } else {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+        tab.setAttribute('tabindex', '-1');
       }
-      window.testrhAnswer = function(idx) {
-        if(idx === questions[current].r) score++;
-        current++;
-        renderQuestion();
-      };
-      renderQuestion();
+    });
+    contentEl.innerHTML = contents[index + 1];
+    if (index + 1 === 8) {
+      currentQuiz = 0;
+      score = 0;
+      renderQuiz();
     }
-  </script>
+  }
+
+  tabs.forEach((tab, idx) => {
+    tab.addEventListener('click', () => activateTab(idx));
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') {
+        let next = (idx + 1) % tabs.length;
+        tabs[next].focus();
+      } else if (e.key === 'ArrowLeft') {
+        let prev = (idx - 1 + tabs.length) % tabs.length;
+        tabs[prev].focus();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        activateTab(idx);
+      }
+    });
+  });
+
+  activateTab(0);
+</script>
 </body>
 </html>
