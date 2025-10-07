@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Conseil & Assistance RH</title>
+  <title>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs</title>
   <style>
     body {
       background: #f1f4f6;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .app-container {
       background: #fff;
@@ -18,7 +18,26 @@
     }
     h1 {
       text-align: center;
-      color: #50505a;
+      color: #3c6078;
+      margin-bottom: 0.5rem;
+    }
+    .doc-link {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .doc-link a {
+      color: #3991ab;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .section-title {
+      background: linear-gradient(90deg,#4dabf7,#74c69d);
+      color: #fff;
+      border-radius: 0.7rem;
+      padding: 0.6rem 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.3rem;
     }
     nav {
       display: flex;
@@ -38,22 +57,13 @@
       box-shadow: 0 2px 6px #0002;
       transition: opacity 0.2s;
     }
-    nav button.direction {
-      background: #4dabf7;
-    }
-    nav button.manager {
-      background: #74c69d;
-    }
-    nav button.rh {
-      background: #f9c74f;
-      color: #a15e00;
-    }
-    nav button.collab {
-      background: #f896a1;
-    }
+    nav button.direction { background: #4dabf7; }
+    nav button.manager { background: #74c69d; }
+    nav button.rh { background: #f9c74f; color: #a15e00; }
+    nav button.collab { background: #f896a1; }
     #content-section {
       margin: 2rem 0 1rem 0;
-      min-height: 140px;
+      min-height: 180px;
       padding: 1rem;
       border-radius: 1rem;
       background: #eef2f5;
@@ -81,11 +91,28 @@
     .testrh-module button:hover {
       background: #1976d2;
     }
+    .example {
+      background: #fde2ed;
+      color: #83275d;
+      padding: 0.7rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      box-shadow: 0 1px 5px #0001;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
   </style>
 </head>
 <body>
   <div class="app-container">
-    <h1>Conseil & Assistance RH</h1>
+    <h1>Paie_B3_M1_001_Le conseil et l'assistance à la direction et aux collaborateurs</h1>
+    <div class="doc-link">
+      <strong>Document PDF support :</strong>
+      <a href="https://drive.google.com/file/d/1EQvkQ5EU2Y8F1Mwx-WqVs7jbbN87rsHS/view?usp=drive_link" target="_blank">Paie_B3_M1_001_Le conseil et l’assistance à la direction et aux collaborateurs</a>
+    </div>
+    <div class="section-title">Explorer les rôles et missions RH</div>
     <nav>
       <button class="direction" onclick="showSection('direction')">Direction</button>
       <button class="manager" onclick="showSection('manager')">Managers</button>
@@ -96,35 +123,62 @@
     <section class="testrh-module" id="testrh-module"></section>
   </div>
   <script>
-    // Contenus par rubrique (exemple inspiré du document)
     const sections = {
-      direction: `<h2>Conseil à la Direction</h2>
+      direction: `
+        <h2>Conseil & accompagnement auprès de la direction</h2>
+        <p>
+          L’expertise du gestionnaire de paie est désormais un levier stratégique pour la direction.
+          Il réalise des audits RH, définit avec la direction les politiques de gestion des talents et de rémunération,
+          propose des solutions pour optimiser les coûts et dynamiser la stratégie RH.<br>
+          <strong>Actions principales :</strong>
+        </p>
         <ul>
-          <li>Audit RH</li>
-          <li>Politique de rémunération et avantages sociaux</li>
-          <li>Conseil juridique et social</li>
+          <li>Réalisation d'audits sur les pratiques RH et la conformité</li>
+          <li>Élaboration et mise en œuvre de la politique RH adaptée aux besoins de l'entreprise</li>
+          <li>Prévention et gestion des risques sociaux : analyse, veille juridique, matrice de risques</li>
+          <li>Force de proposition auprès du dirigeant : outils, équipes, organisation</li>
         </ul>
-        <p>Un expert RH accompagne la direction dans la stratégie et la prévention des risques.</p>`,
-      manager: `<h2>Assistance aux Managers</h2>
+        <div class="example"><strong>Exemple :</strong> Proposition d’un plan d’action pour réduire le turnover, optimisation de la grille salariale, animation d’ateliers stratégiques.</div>
+      `,
+      manager: `
+        <h2>Appui et assistance aux managers</h2>
+        <p>
+          Le gestionnaire de paie accompagne les managers dans leur quotidien :
+          procédures disciplinaires, gestion des absences, entretiens annuels, prévention des risques psychosociaux (RPS).
+          Il forme, conseille, anime sur la conduite du changement et l’amélioration du climat social.
+        </p>
         <ul>
-          <li>Gestion d’équipes</li>
-          <li>Déploiement des processus RH</li>
-          <li>Accompagnement dans la résolution de conflits</li>
+          <li>Accompagnement sur les entretiens et évaluations</li>
+          <li>Actions de sensibilisation aux RPS et gestion des conflits</li>
+          <li>Conseils aux managers sur la conformité sociale et légale</li>
         </ul>
-        <p>Le RH conseille et forme les managers au quotidien.</p>`,
-      rh: `<h2>Appui aux RH</h2>
+        <div class="example"><strong>Exemple :</strong> Intervention lors de la mise en place d’un nouveau logiciel RH ou d’une politique de gestion du temps, formation à la gestion du stress.</div>
+      `,
+      rh: `
+        <h2>Appui technique à l’équipe RH</h2>
+        <p>
+          Le gestionnaire de paie forme les équipes RH sur les logiciels, le droit du travail, les évolutions légales et les pratiques de paie.
+          Il intervient sur des problématiques complexes (PSE, litiges), propose des audits internes et externalisés.
+        </p>
         <ul>
-          <li>Formation</li>
-          <li>Prise en charge de cas complexes</li>
+          <li>Formation continue (logiciels, droit du travail, négociation)</li>
+          <li>Veille juridique et accompagnement dans la gestion des contentieux</li>
+          <li>Soutien technique et conseil lors de réorganisations ou de PSE</li>
         </ul>
-        <p>Le service RH bénéficie d’un support pour tous les défis spécifiques.</p>`,
-      collab: `<h2>Support aux Collaborateurs</h2>
+        <div class="example"><strong>Exemple :</strong> Organisation de sessions juridiques sur la réforme du Code du travail ou de workshops paie poussés.</div>
+      `,
+      collab: `
+        <h2>Assistance individuelle aux collaborateurs</h2>
+        <p>
+          Le gestionnaire de paie répond aux interrogations courantes (fiche de paie, congés), aide à comprendre les droits sociaux, accompagne tout au long du parcours professionnel et dans les démarches administratives ou juridiques.
+        </p>
         <ul>
-          <li>Explication du bulletin de paie</li>
-          <li>Gestion des congés et absences</li>
-          <li>Information sur les droits sociaux</li>
+          <li>Explication détaillée du bulletin de salaire</li>
+          <li>Assistance sur les congés, absences, retraite, changement de situation</li>
+          <li>Accompagnement sur les questions juridiques et sociales</li>
         </ul>
-        <p>Des réponses claires à toutes les questions des collaborateurs.</p>`
+        <div class="example"><strong>Exemple :</strong> Explication personnalisée de chaque ligne de la fiche de paie lors d’une embauche ou simulation des droits à la retraite.</div>
+      `
     };
 
     function showSection(key) {
@@ -132,24 +186,31 @@
       document.getElementById('content-section').innerHTML = content;
     }
 
-    // Affichage par défaut
     window.onload = function() {
       showSection('direction');
       initTestRH();
     };
 
-    // Quiz RH
     function initTestRH() {
       const questions = [
         {
-          q: "Quel est le premier pas dans l'établissement d'une politique de rémunération efficace ?",
+          q: "Quel est le premier pas pour établir une politique de rémunération efficace ?",
           a: ["Audit RH", "Procédures disciplinaires", "Former les managers"],
           r: 0
         },
         {
-          q: "Qui est l'expert CompBen ?",
-          a: ["Consultant RH", "Juriste social", "Spécialiste de la rémunération"],
+          q: "Quel métier définit un spécialiste de la rémunération ?",
+          a: ["Consultant RH", "Juriste social", "Responsable CompBen"],
           r: 2
+        },
+        {
+          q: "Qui doit être informé lors de la communication RH ?",
+          a: [
+            "Uniquement la direction",
+            "Les collaborateurs et les élus",
+            "Public externe uniquement"
+          ],
+          r: 1
         }
       ];
       let current = 0, score = 0;
@@ -162,7 +223,7 @@
         }
         const q = questions[current];
         document.getElementById('testrh-module').innerHTML =
-          `<h2>Test RH express</h2>
+          `<h2>Quiz Synthèse RH</h2>
           <p>${q.q}</p>
           <div>${q.a.map((ans,i)=>
             `<button onclick="window.testrhAnswer(${i})">${ans}</button>`).join('')}
